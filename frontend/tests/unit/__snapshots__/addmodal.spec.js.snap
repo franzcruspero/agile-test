@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addModal.vue renders correctly 1`] = `
+<div>
+  <div
+    aria-hidden="true"
+    aria-labelledby="label"
+    class="modal fade"
+    tabindex="-1"
+  >
+    <div
+      class="modal-dialog"
+    >
+      <div
+        class="modal-content"
+      >
+        <div
+          class="modal-header"
+        >
+          <h5
+            class="modal-title"
+            id="label"
+          >
+            Add Value/Principle
+          </h5>
+          <button
+            aria-label="Close"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            type="button"
+          />
+        </div>
+        <form
+          class="needs-validation"
+          novalidate=""
+        >
+          <div
+            class="modal-body"
+          >
+            <div>
+              <label
+                class="form-label"
+                for="title"
+              >
+                Title
+              </label>
+              <input
+                class="form-control"
+                id="title"
+                placeholder=""
+                required=""
+                type="text"
+              />
+              <div
+                class="invalid-feedback"
+              >
+                 Valid first name is required. 
+              </div>
+            </div>
+            <div>
+              <label
+                class="form-label"
+                for="description"
+              >
+                Description
+              </label>
+              <textarea
+                class="form-control"
+                id="description"
+                placeholder=""
+                required=""
+                rows="3"
+                type="text"
+              />
+              <div
+                class="invalid-feedback"
+              >
+                 Valid first name is required. 
+              </div>
+            </div>
+          </div>
+          <div
+            class="modal-footer"
+          >
+            <button
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              type="button"
+            >
+               Close 
+            </button>
+            <button
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+              id="submit-button"
+              type="submit"
+            >
+               Save changes 
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;

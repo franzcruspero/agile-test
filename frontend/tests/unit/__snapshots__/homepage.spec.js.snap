@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`homePage.vue renders correctly 1`] = `
+<div
+  class="container"
+>
+  <div
+    class="px-4 py-5 border shadow-lg"
+  >
+    <h1
+      class="display-5 fw-bold"
+    >
+       Values and Principles of Agile Software Development 
+    </h1>
+    <div
+      class="btn-group"
+    >
+      <button
+        class="pb-2 btn btn-outline-primary"
+        data-bs-target="#values"
+        data-bs-toggle="modal"
+        type="button"
+      >
+        <svg
+          class="bi bi-plus-square-fill"
+          fill="currentColor"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"
+          />
+        </svg>
+         Add Value 
+      </button>
+      <add-modal-stub
+        listreload="0"
+        type="values"
+      />
+      <button
+        class="pb-2 btn btn-outline-primary"
+        data-bs-target="#principles"
+        data-bs-toggle="modal"
+        type="button"
+      >
+        <svg
+          class="bi bi-plus-square-fill"
+          fill="currentColor"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"
+          />
+        </svg>
+         Add Principle 
+      </button>
+      <add-modal-stub
+        listreload="0"
+        type="principles"
+      />
+    </div>
+    <div
+      class="container px-4 py-5"
+      id="featured-3"
+    >
+      <div
+        class="row"
+      >
+        <h2
+          class="pb-2 border-bottom"
+        >
+          Values
+        </h2>
+      </div>
+      <list-stub
+        type="values"
+      />
+      <div
+        class="row"
+      >
+        <h2
+          class="pb-2 border-bottom"
+        >
+          Principles
+        </h2>
+      </div>
+      <list-stub
+        type="principles"
+      />
+    </div>
+  </div>
+  <div
+    class="b-example-divider"
+  />
+</div>
+`;
