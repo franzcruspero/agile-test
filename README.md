@@ -28,14 +28,19 @@ This repository is used for both backend and frontend of a list app developed wi
 3. Run `python manage.py migrate`
 4. Run `python manage.py runserver`
 
+### Running unit tests
+
+1. Run `pipenv shell`
+2. Run `python manage.py test`
+
 ### Notes
 
-**A fixutre json file has already been prepared to pre-fill the backend database with the 4 values and 12 principles of Agile Software Development. The fixture file will be ran as a migration**
+**A fixture json file has already been prepared to pre-fill the backend database with the 4 values and 12 principles of Agile Software Development. The fixture file will be ran as a migration**
 
 # Frontend
 
 1. NodeJS ver. 14.17.5
-2. Vue CLI
+2. Vue CLI ver. 4.5.3
 
 ### Installation
 

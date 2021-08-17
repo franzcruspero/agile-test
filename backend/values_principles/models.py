@@ -1,8 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-# from django_extensions.db.models import TimeStampedModel
-
 
 class Value(models.Model):
     class Meta:
@@ -20,6 +18,3 @@ class Principle(models.Model):
 
     title = models.CharField(_(_("Title")), max_length=300, blank=True, null=True)
     description = models.TextField(_("Description"), blank=True, null=True)
-
-
-# Create your models here.
