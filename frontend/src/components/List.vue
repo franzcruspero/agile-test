@@ -71,7 +71,7 @@
                     </div>
                     <form
                       @submit.prevent="
-                        this.updateRecord(
+                        this.updateEntry(
                           result.id,
                           results[index].title,
                           results[index].description
@@ -153,19 +153,23 @@
 import axios from "axios";
 
 export default {
-  props: { type: String, list_reload: Number },
+  props: { type: String, listReload: Number },
   data() {
     return {
       results: [],
       currentData: [],
-      currentDescription: [],
     };
   },
   methods: {
     async loadData() {
-      const response = await axios.get(
-        `http://localhost:8000/api/v1/${this.type}/`
-      );
+      let response = "";
+      try {
+        response = await axios.get(
+          `http://localhost:8000/api/v1/${this.type}/`
+        );
+      } catch (err) {
+        alert(err);
+      }
       response.data.map((result) => {
         this.currentData.push({
           id: result.id,
@@ -177,23 +181,33 @@ export default {
 
       return response;
     },
-    async updateRecord(id, title, description) {
-      const response = await axios.patch(
-        `http://localhost:8000/api/v1/${this.type}/${id}/`,
-        {
-          title: title,
-          description: description,
-        }
-      );
-      this.$emit("updateRecord");
+    async updateEntry(id, title, description) {
+      let response = "";
+      try {
+        response = await axios.patch(
+          `http://localhost:8000/api/v1/${this.type}/${id}/`,
+          {
+            title: title,
+            description: description,
+          }
+        );
+      } catch (err) {
+        alert(err);
+      }
+      this.$emit("updateEntry");
 
       return response;
     },
     async deleteEntry(id) {
-      const response = await axios.delete(
-        `http://localhost:8000/api/v1/${this.type}/${id}/`
-      );
-      this.$emit("updateRecord");
+      let response = "";
+      try {
+        response = await axios.delete(
+          `http://localhost:8000/api/v1/${this.type}/${id}/`
+        );
+      } catch (err) {
+        alert(err);
+      }
+      this.$emit("updateEntry");
 
       return response;
     },

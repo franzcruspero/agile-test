@@ -27,8 +27,8 @@
         </button>
         <AddModal
           type="values"
-          :list_reload="list_reload"
-          @submitForm="list_reload++"
+          :listReload="listReload"
+          @submitForm="listReload++"
         />
         <button
           type="button"
@@ -52,23 +52,19 @@
         </button>
         <AddModal
           type="principles"
-          :list_reload="list_reload"
-          @submitForm="list_reload++"
+          :listReload="listReload"
+          @submitForm="listReload++"
         />
       </div>
       <div class="container px-4 py-5" id="featured-3">
         <div class="row">
           <h2 class="pb-2 border-bottom">Values</h2>
         </div>
-        <List :key="list_reload" @updateRecord="list_reload++" type="values" />
+        <List :key="listReload" @updateEntry="listReload++" type="values" />
         <div class="row">
           <h2 class="pb-2 border-bottom">Principles</h2>
         </div>
-        <List
-          :key="list_reload"
-          @updateRecord="list_reload++"
-          type="principles"
-        />
+        <List :key="listReload" @updateEntry="listReload++" type="principles" />
       </div>
     </div>
     <div class="b-example-divider"></div>
@@ -86,9 +82,7 @@ export default {
   },
   data() {
     return {
-      title: "",
-      description: "",
-      list_reload: 0,
+      listReload: 0,
     };
   },
 };

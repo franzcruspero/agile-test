@@ -64,6 +64,7 @@
               </button>
               <button
                 type="submit"
+                id="submit-button"
                 class="btn btn-primary"
                 data-bs-dismiss="modal"
               >
@@ -83,21 +84,30 @@ import axios from "axios";
 export default {
   props: {
     type: String,
-    list_reload: Number,
+    listReload: Number,
   },
   data() {
-    return {};
+    return { title: "", description: "" };
   },
   methods: {
     async submitForm() {
-      await axios.post(`http://localhost:8000/api/v1/${this.type}/`, {
-        title: this.title,
-        description: this.description,
-      });
+      let response = "";
+      try {
+        response = await axios.post(
+          `http://localhost:8000/api/v1/${this.type}/`,
+          {
+            title: this.title,
+            description: this.description,
+          }
+        );
+      } catch (err) {
+        alert(err);
+      }
 
       this.title = "";
       this.description = "";
       this.$emit("submitForm");
+      return response;
     },
   },
 };
