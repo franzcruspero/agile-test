@@ -9,8 +9,8 @@ class Value(models.Model):
         verbose_name = _("Value")
         verbose_name_plural = _("Values")
 
-    name = models.CharField(_(_("Name")), max_length=100, blank=True, null=True)
-    description = models.TextField(_("Description"))
+    title = models.CharField(_(_("Title")), max_length=300, blank=True, null=True)
+    description = models.TextField(_("Description"), blank=True, null=True)
 
 
 class Principle(models.Model):
@@ -18,8 +18,8 @@ class Principle(models.Model):
         verbose_name = _("Principle")
         verbose_name_plural = _("Principles")
 
-    name = models.CharField(_(_("Name")), max_length=100, blank=True, null=True)
-    description = models.TextField(_("Description"))
+    title = models.CharField(_(_("Title")), max_length=300, blank=True, null=True)
+    description = models.TextField(_("Description"), blank=True, null=True)
 
 
 # Create your models here.
