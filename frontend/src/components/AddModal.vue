@@ -25,13 +25,13 @@
           >
             <div class="modal-body">
               <div>
-                <label for="name" class="form-label">Name</label>
+                <label for="title" class="form-label">Title</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="name"
+                  id="title"
                   placeholder=""
-                  v-model="name"
+                  v-model="title"
                   required
                 />
                 <div class="invalid-feedback">
@@ -91,11 +91,11 @@ export default {
   methods: {
     async submitForm() {
       await axios.post(`http://localhost:8000/api/v1/${this.type}/`, {
-        name: this.name,
+        title: this.title,
         description: this.description,
       });
 
-      this.name = "";
+      this.title = "";
       this.description = "";
       this.$emit("submitForm");
     },

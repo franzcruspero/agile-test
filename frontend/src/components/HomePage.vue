@@ -1,18 +1,28 @@
 <template>
   <div class="container">
-    <h1 class="visually-hidden">Heroes examples</h1>
-
     <div class="px-4 py-5 border shadow-lg">
       <h1 class="display-5 fw-bold">
         Values and Principles of Agile Software Development
       </h1>
-      <div class="row">
+      <div class="btn-group">
         <button
           type="button"
-          class="pb-2 btn btn-primary"
+          class="pb-2 btn btn-outline-primary"
           data-bs-toggle="modal"
           data-bs-target="#values"
         >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-plus-square-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"
+            />
+          </svg>
           Add Value
         </button>
         <AddModal
@@ -22,27 +32,43 @@
         />
         <button
           type="button"
-          class="pb-2 btn btn-primary"
+          class="pb-2 btn btn-outline-primary"
           data-bs-toggle="modal"
           data-bs-target="#principles"
         >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-plus-square-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"
+            />
+          </svg>
           Add Principle
         </button>
+        <AddModal
+          type="principles"
+          :list_reload="list_reload"
+          @submitForm="list_reload++"
+        />
       </div>
-      <AddModal
-        type="principles"
-        :list_reload="list_reload"
-        @submitForm="list_reload++"
-      />
       <div class="container px-4 py-5" id="featured-3">
         <div class="row">
           <h2 class="pb-2 border-bottom">Values</h2>
         </div>
-        <List :key="list_reload" @submitForm="list_reload++" type="values" />
+        <List :key="list_reload" @updateRecord="list_reload++" type="values" />
         <div class="row">
           <h2 class="pb-2 border-bottom">Principles</h2>
         </div>
-        <List :key="list_reload" type="principles" />
+        <List
+          :key="list_reload"
+          @updateRecord="list_reload++"
+          type="principles"
+        />
       </div>
     </div>
     <div class="b-example-divider"></div>
@@ -60,7 +86,7 @@ export default {
   },
   data() {
     return {
-      name: "",
+      title: "",
       description: "",
       list_reload: 0,
     };

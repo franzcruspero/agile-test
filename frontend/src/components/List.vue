@@ -22,20 +22,36 @@
           </div>
           <div>
             <h2>
-              {{ currentData[index].name }}
+              <span>{{ currentData[index].title }} </span>
               <button
-                class="btn btn-secondary"
+                class="btn btn-outline"
                 data-bs-toggle="modal"
-                :data-bs-target="'#data' + result.id"
+                :data-bs-target="'#' + type + result.id"
               >
-                Update {{ type }}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-arrow-clockwise"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"
+                  />
+                  <path
+                    d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"
+                  />
+                </svg>
+                Update
               </button>
             </h2>
             <p>{{ currentData[index].description }}</p>
             <div>
               <div
                 class="modal fade"
-                :id="['data' + result.id]"
+                :id="[type + result.id]"
                 tabindex="-1"
                 aria-labelledby="label"
                 aria-hidden="true"
@@ -55,9 +71,9 @@
                     </div>
                     <form
                       @submit.prevent="
-                        this.submitForm(
+                        this.updateRecord(
                           result.id,
-                          results[index].name,
+                          results[index].title,
                           results[index].description
                         )
                       "
@@ -66,12 +82,12 @@
                     >
                       <div class="modal-body">
                         <div>
-                          <label for="name" class="form-label">Name</label>
+                          <label for="title" class="form-label">Title</label>
                           <input
                             type="text"
                             class="form-control"
-                            id="name"
-                            v-model="results[index].name"
+                            id="title"
+                            v-model="results[index].title"
                             required
                           />
                           <div class="invalid-feedback">
@@ -111,6 +127,15 @@
                         >
                           Save changes
                         </button>
+                        <button
+                          type="button"
+                          class="btn btn-danger"
+                          data-bs-dismiss="modal"
+                          aria-label="Delete"
+                          @click="deleteEntry(result.id)"
+                        >
+                          Delete
+                        </button>
                       </div>
                     </form>
                   </div>
@@ -144,18 +169,33 @@ export default {
       response.data.map((result) => {
         this.currentData.push({
           id: result.id,
-          name: result.name,
+          title: result.title,
           description: result.description,
         });
       });
       this.results = response.data;
+
+      return response;
     },
-    async submitForm(id, name, description) {
-      await axios.patch(`http://localhost:8000/api/v1/${this.type}/${id}/`, {
-        name: name,
-        description: description,
-      });
-      this.$emit("submitForm");
+    async updateRecord(id, title, description) {
+      const response = await axios.patch(
+        `http://localhost:8000/api/v1/${this.type}/${id}/`,
+        {
+          title: title,
+          description: description,
+        }
+      );
+      this.$emit("updateRecord");
+
+      return response;
+    },
+    async deleteEntry(id) {
+      const response = await axios.delete(
+        `http://localhost:8000/api/v1/${this.type}/${id}/`
+      );
+      this.$emit("updateRecord");
+
+      return response;
     },
   },
   mounted() {
